@@ -5,10 +5,11 @@
              x:Class="Stopwatch.MainPage">
 
     <StackLayout Margin="0,30,0,0">
-        <!-- Place new controls here -->
         <Label Text="XX:XX:XX" x:Name="TimerLabel" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Fill" />
         <Button Text="Start" x:Name="btnStartTimer" Clicked="btnStartTimer_Clicked"/>
         <Button Text="Stop" x:Name="btnStopTimer" Clicked="btnStopTimer_Clicked"/>
-       <!--<Button Text="Reset" x:Name="btnReset" Clicked="btnReset_Clicked"/>-->
+<!-- this button prevents the app from launching.  Why? I'm not sure-->        
+        <Button Text="Reset" x:Name="btnResetTimer" Clicked="btnReset_Clicked"/>
+
     </StackLayout>
 </ContentPage>

@@ -9,7 +9,7 @@ namespace Stopwatch
 {
     public partial class MainPage : ContentPage
     {
-        //TimeSpan updateInterval = TimeSpan.FromMilliseconds(10);
+        TimeSpan updateInterval = TimeSpan.FromMilliseconds(10);
 
         public bool isTiming = false;
         double min, sec, milli;
@@ -19,19 +19,27 @@ namespace Stopwatch
         public MainPage()
         {
             InitializeComponent();
-            //btnStartTimer.Clicked += delegate
-            //{
-            //    timer = new Timer();
-            //    timer.Interval = 1;
-            //    timer.Elapsed += Timer_Elapsed;
-            //    timer.Start();
-            //};
+            btnStartTimer.Clicked += delegate
+            {
+                timer = new Timer();
+                timer.Interval = 1;
+                timer.Elapsed += Timer_Elapsed;
+                timer.Start();
+            };
 
-            //btnStopTimer.Clicked += delegate
-            //{
-            //    timer.Stop();
-            //    timer = null; //removre instance of timer so we can start new one 
-            //};
+            btnStopTimer.Clicked += delegate
+            {
+                timer.Stop();
+                timer = null; //removre instance of timer so we can start new one 
+            };
+
+            btnResetTimer.Clicked += delegate
+            {
+                isTiming = false;
+                timer.Close();
+                timer = new Timer();
+                TimerLabel.Text = "0:00:000";
+            };
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -81,6 +89,16 @@ namespace Stopwatch
         {
             isTiming = false;
             timer.Stop();
+
+
+        }
+
+        private void btnResetTimer_Clicked(object sender, EventArgs e)
+        {
+            isTiming = false;
+            timer.Close();
+            timer = new Timer();
+            TimerLabel.Text = "0:00:000";
         }
 
     }
